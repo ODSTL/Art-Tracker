@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<form method="post" th:object="${form}" action="/display/add-item">
+
+    <div class="form-group">
+        <label th:for="artworkId">Artwork</label>
+        <select name="artworkId">
+            <option th:each="artwork : *{artworks}"
+                    th:text="${artwork.name}"
+                    th:value="${artwork.Id}"></option>
+        </select>
+    </div>
+
+    <input type="hidden" name="displayId" th:value="*{display.id}" />
+
+    <input type="submit" value="Add Item" />
+</form>
+
+</body>
+</html>

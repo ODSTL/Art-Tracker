@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+
+<table class="table">
+
+    <tr>
+        <th>Name</th>
+    </tr>
+
+    <tr th:each="location : ${locations}">
+        <td th:text="${location.name}"></td>
+    </tr>
+
+</table>
+
+<nav>
+    <a href="/location/add">Add Location</a>
+</nav>
+
+</body>
+</html>
