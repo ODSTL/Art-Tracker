@@ -29,7 +29,7 @@ public class ArtworkController {
     @RequestMapping(value = "")
     public String index(Model model) {
 
-        model.addAttribute("artworkss", artworkDao.findAll());
+        model.addAttribute("artworks", artworkDao.findAll());
         model.addAttribute("title", "My Artworks");
 
         return "artwork/index";
@@ -50,7 +50,7 @@ public class ArtworkController {
             @RequestParam int locationId,
             Model model) {
 
-        Location cat = locationDao.findOne(locationId);
+        Location cat = locationDao.findById(locationId).get();
         newArtwork.setLocation(cat);
 
         if (errors.hasErrors()) {
@@ -72,7 +72,7 @@ public class ArtworkController {
     public String processRemoveArtworkForm(@RequestParam int[] artworkIds) {
 
         for (int artworkId : artworkIds) {
-            artworkDao.delete(artworkId);
+            artworkDao.delete(artworkDao.findById(artworkId).get());
         }
 
         return "redirect:";

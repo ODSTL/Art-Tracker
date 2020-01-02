@@ -14,14 +14,18 @@
 <table class="table">
 
     <tr>
-        <th>Name</th>
-        <th>Description</th>
+        <th>Title</th>
+        <th>Size</th>
+        <th>Medium</th>
+        <th>Price</th>
         <th>Location</th>
     </tr>
 
     <tr th:each="artwork : ${artworks}">
         <td th:text="${artwork.name}"></td>
+        <td th:text="${artwork.size}"></td>
         <td th:text="${artwork.description}"></td>
+        <td th:text="${artwork.price}"></td>
         <td th:text="${artwork.location.name}"></td>
     </tr>
 

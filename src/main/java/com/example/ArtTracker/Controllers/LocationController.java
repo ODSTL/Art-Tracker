@@ -31,7 +31,7 @@ public class LocationController {
             value = {"add"},
             method = {RequestMethod.GET}
     )
-    public String displayAddCategoryForm(Model model) {
+    public String displayAddLocationForm(Model model) {
         model.addAttribute("title", "Add Location");
         model.addAttribute(new Location());
         return "location/add";
@@ -41,7 +41,7 @@ public class LocationController {
             value = {"add"},
             method = {RequestMethod.POST}
     )
-    public String processAddCategoryForm(@ModelAttribute @Valid Location newLocation, Errors errors, Model model) {
+    public String processAddLocationForm(@ModelAttribute @Valid Location newLocation, Errors errors, Model model) {
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Location");
             return "location/add";

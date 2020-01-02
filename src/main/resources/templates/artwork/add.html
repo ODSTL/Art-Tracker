@@ -8,16 +8,25 @@
 
 <form method="post" style="max-width:600px;" th:object="${artwork}">
     <div class="form-group">
-        <label th:for="name">Name</label>
+        <label th:for="name">Title</label>
         <input class="form-control" th:field="*{name}" />
         <span th:errors="*{name}" class="error"></span>
     </div>
     <div class="form-group">
-        <label th:for="description">Description</label>
+        <label th:for="size">Size</label>
+        <input class="form-control" th:field="*{size}" />
+        <span th:errors="*{size}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="description">Medium</label>
         <input class="form-control" th:field="*{description}" />
         <span th:errors="*{description}" class="error"></span>
     </div>
-
+    <div class="form-group">
+        <label th:for="price">Price</label>
+        <input class="form-control" th:field="*{price}" />
+        <span th:errors="*{price}" class="error"></span>
+    </div>
     <div class="form-group">
         <label th:for="type">Location</label>
         <select name="locationId">

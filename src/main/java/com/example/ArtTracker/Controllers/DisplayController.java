@@ -59,7 +59,7 @@ public class DisplayController {
     @RequestMapping(value = "view/{displayId}", method = RequestMethod.GET)
     public String addItem(Model model, @PathVariable int displayId) {
 
-        Display display = (Display) displayDao.findOne(displayId);
+        Display display = displayDao.findById(displayId).get();
 
 
 
@@ -79,8 +79,8 @@ public class DisplayController {
             return "display/add-item";
         }
 
-        Artwork theArtwork = (Artwork) artworkDao.findOne(form.getArtworkId());
-        Display theDisplay = (Display) displayDao.findOne(form.getDisplayId());
+        Artwork theArtwork = artworkDao.findById(form.getArtworkId()).get();
+        Display theDisplay = displayDao.findById(form.getDisplayId()).get();
         theDisplay.addItem(theArtwork);
         displayDao.save(theDisplay);
 
@@ -91,11 +91,9 @@ public class DisplayController {
     public String addItems(Model model, @PathVariable int displayId ) {
 
 
-        Display display = (Display) displayDao.findOne(displayId);
+        Display display = displayDao.findById(displayId).get();
 
-        AddDisplayItemForm form = new AddDisplayItemForm(
-                ArtworkDao.findAll(),
-                display);
+        AddDisplayItemForm form = new AddDisplayItemForm(artworkDao.findAll(), display);
 
 
         model.addAttribute("form",form);
